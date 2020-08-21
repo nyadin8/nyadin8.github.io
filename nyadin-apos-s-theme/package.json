@@ -1,0 +1,21 @@
+{
+    "name": "nyadin-apos-s-theme",
+    "displayName": "Nyadin&apos;s Theme",
+    "description": "",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.48.0"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "Nyadin&apos;s Theme",
+                "uiTheme": "vs",
+                "path": "./themes/Nyadin&apos;s Theme-color-theme.json"
+            }
+        ]
+    }
+}
