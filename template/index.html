@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <script>
+    window.process = { env: { }};
+  </script> -->
+  <!-- <script type="module" src="dist/index.js"></script> -->
+  <script src="https://unpkg.com/mustache@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+  <script>
+    const dataList = [
+      {
+        addresses: [
+          {
+            address: "г. Иваново, Проспект Ленина, 47",
+            phone: "+7 (4932) 50-61-51",
+          }
+        ],
+        city: "иваново",
+      },
+      {
+        addresses: [
+          {
+            address: "г. Тула, Проспект Ленина, 78",
+            phone: "+7 (4872) 79-31-50",
+          }
+        ],
+        city: "тула",
+      },
+      {
+        addresses: [
+          {
+            address: "г. Тверь, бульвар Радищева, 5",
+            phone: "+7 (4822) 60-03-32",
+          }
+        ],
+        city: "тверь",
+      },
+      {
+        addresses: [
+          {
+            address: "г. Великие Луки, Проспект Ленина, 36 к1",
+            phone: "+7 (8112) 60-01-50",
+          }
+        ],
+        city: "великиелуки",
+      },
+      {
+        addresses: [
+          {
+            address: "г. Рязань, Первомайский проспект, 35",
+            phone: "+7 (4912) 51-23-31",
+          }
+        ],
+        city: "рязань",
+      },
+      {
+        addresses: [
+          {
+            address: "г. Липецк, ул.Советская, 71",
+            phone: "+7 (4742) 24-20-47",
+          }
+        ],
+        city: "липецк",
+      },
+      {
+        addresses: [
+          {
+            address: "г. Ярославль, ул.Свободы, 40/38",
+            phone: "+7 (4852) 33-61-51",
+          }
+        ],
+        city: "ярославль",
+      },
+      {
+        addresses: [
+          {
+            address: "г. Череповец, ул.Максима Горького, 47",
+            phone: "+7 (8202) 60-61-51",
+          }
+        ],
+        city: "череповец",
+      },
+      {
+        addresses: [
+          {
+            address: "г. Воронеж, ул. Кольцовская 37/2",
+            phone: "+7 (473) 229-39-32",
+          }
+        ],
+        city: "воронеж",
+      },
+      {
+        addresses: [
+          {
+            address: "г. Вологда, ул. Кирова, 57 - ТЦ Кардинал",
+            phone: "+7 (8172) 50-61-52",
+          },
+          {
+            address: "г. Вологда, ул. Марии Ульяновой, 8",
+            phone: "+7 (8172) 50-61-51",
+          }
+        ],
+        city: "вологда",
+      },
+      {
+        addresses: [
+          {
+            address: "г. Калуга, ул. Пушкина д. 6 А, 1-ый этаж",
+          }
+        ],
+        city: "калуга",
+      },
+    ];
+
+    document.addEventListener('click', (event) => {
+      const target = event.target;
+
+      if (event.target.matches('button.cpy')) {
+        target.parentElement.style.background = '#ffee93';
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const inputArea = document.querySelector('#template');
+      const results = document.querySelector('#result');
+
+      new ClipboardJS('.cpy');
+
+      const changedAndRender = () => {
+        const template = inputArea.value;
+        results.innerHTML = '';
+
+        dataList.forEach((data, index) => {
+          const rendered = Mustache.render(template, data);
+          results.innerHTML += `<div>
+      <div class="city">${data.city}</div>
+      <button class="cpy" data-clipboard-target="#content${index}">Copy</button>
+      <span class="content" id="content${index}">${rendered}</span>
+      </div>`;
+          //   results.innerHTML += `<div>
+          // <button class="cpy" data-clipboard-target="#content${index}">Copy</button>
+          // <div class="city">${data.city}</div>
+          // <span class="content" id="content${index}">${rendered}</span>
+          // </div>`;
+        });
+      };
+
+      // inputArea.addEventListener('keydown', changedAndRender);
+      inputArea.addEventListener('input', changedAndRender);
+
+      changedAndRender();
+    });
+
+  </script>
+  <style>
+    #result>div {
+      position: relative;
+      border: 1px solid silver;
+      width: 600px;
+      margin: 1.4em 0;
+      padding: 1.6em 1.4em 1.4em 1.4em;
+    }
+
+    #result .city {
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 1em 0;
+    }
+
+    #result .cpy {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    #result div .content {
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <textarea id="template" rows="15" cols="100">
+ТУТ ТВОЙ ТЕКСТ
+
+🧡Цена: 000 р.
+
+Приходите за покупками по адресу:
+{{#addresses}}
+🔹{{address}}
+{{#phone}}☎️тел.: {{phone}}{{/phone}}
+{{/addresses}}
+
+⚠️Уважаемые подписчики, уточняйте наличие товара в личных сообщениях.
+
+#всепо150{{city}} #антикризисныймагазин #косметика{{city}} #хайлайтер{{city}} #{{city}} #fixzone{{city}}
+  </textarea>
+
+  <div id="result"></div>
+</body>
+
+</html>
