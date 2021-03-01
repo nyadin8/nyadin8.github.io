@@ -9,7 +9,10 @@ const updateDone = () => {
   const total = resultsList.length;
   const done = doneList.length;
 
-  progressDone.style.width = `${done / total * 100}%`;
+  if (done === 0) {
+    progressDone.style.width = '0';
+  }
+  else progressDone.style.width = `${done / total * 100}%`;
   progressText.textContent = `${done}/${total}`;
 };
 
