@@ -1,0 +1,57 @@
+body {
+  margin-bottom: 70px;
+}
+
+#result>div {
+  position: relative;
+  border: 1px solid silver;
+  width: 600px;
+  margin: 1.4em 0;
+  padding: 1.6em 1.4em 1.4em 1.4em;
+}
+
+#result .city {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 1em 0;
+}
+
+#result .cpy {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#result div .content {
+  font-family: monospace;
+  white-space: pre-wrap;
+}
+
+#progress {
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(224, 224, 224);
+}
+
+#progress-done {
+  height: 50px;
+  background-color: rgb(160, 255, 160);
+}
+
+#progress-text {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  top: 0;
+  font-size: 20pt;
+  font-family: sans-serif;
+  font-weight: bold;
+  line-height: 50px;
+}
+
+.CodeMirror {
+  border: 1px solid silver;
+}
