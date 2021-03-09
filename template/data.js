@@ -102,4 +102,7 @@ window.data = [
     ],
     city: "калуга",
   },
+  {
+    marusia: true
+  }
 ];
