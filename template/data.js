@@ -103,6 +103,7 @@ window.data = [
     city: "калуга",
   },
   {
-    marusia: true
-  }
+    city: "маруська",
+    marusia: true,
+  },
 ];
