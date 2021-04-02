@@ -103,6 +103,15 @@ window.data = [
     city: "калуга",
   },
   {
+    addresses: [
+      {
+        address: "г. Брянск, пр. Ленина, 13",
+        phone: "+7 (4832) 33-01-72",
+      }
+    ],
+    city: "брянск",
+  },
+  {
     city: "маруська",
     marusia: true,
   },
