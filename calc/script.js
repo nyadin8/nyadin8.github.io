@@ -1,7 +1,7 @@
 const TARGETS = [[0, 3], [3, 2], [5, 1]];
 
 const calculateCoeff = (errorPerc) => {
-  if (errorPerc > R.last(TARGETS)[0]) {
+  if (errorPerc >= R.last(TARGETS)[0]) {
     return 1;
   };
 
@@ -25,8 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const numberValue = parseInt(numberInput.value);
     const errorPercValue = parseFloat(errorPercInput.value);
     const coeff = calculateCoeff(errorPercValue)
-    const result = Number(numberValue * coeff);
+    const result = numberValue * coeff;
+    const taxResult = result - result * 0.13;
 
-    resultContainer.innerHTML = `Результат: ${result} руб.`;
+    resultContainer.innerHTML = `
+      <div>Сумма за карточку: ${coeff.toFixed(2)} руб.</div>
+      <div>Сумма до вычета: ${result.toFixed(2)} руб.</div>
+      <div>Сумма с вычетом: ${taxResult.toFixed(2)} руб.</div>
+    `;
   });
 });
